@@ -1,36 +1,40 @@
 const express = require('express');
+const calc = require('./util/calculadora');
 const app = express();
-const calculadora = require('./util/calculadora');
 
-app.get('/somar/:a/:b', (req, res) => {
-    const a = parseFloat(req.params.a);
-    const b = parseFloat(req.params.b);
-    const resultado = calculadora.somar(a, b);
-    res.send(`Resultado: ${resultado}`);
+app.get('/', (req, res)=>{
+    res.send("Se nao apareceu a calculadora eu fiz merda!");
 });
 
-app.get('/subtrair/:a/:b', (req, res) => {
-    const a = parseFloat(req.params.a);
-    const b = parseFloat(req.params.b);
-    const resultado = calculadora.subtrair(a, b);
-    res.send(`Resultado: ${resultado}`);
+app.get('/somar/:n1/:n2', (req, res)=>{
+    let a = req.params.n1;
+    let b = req.params.n2;
+    let c = calc.somar(a, b);
+    res.send(`${a} + ${b} = ${c}`);
 });
 
-app.get('/multiplicar/:a/:b', (req, res) => {
-    const a = parseFloat(req.params.a);
-    const b = parseFloat(req.params.b);
-    const resultado = calculadora.multiplicar(a, b);
-    res.send(`Resultado: ${resultado}`);
+app.get('/subtrair/:a/:b', (req, res)=>{
+    let a = req.params.a;
+    let b = req.params.b;
+    let c = calc.subtrair(a, b);
+    res.send(`${a} - ${b} = ${c}`);
 });
 
-app.get('/dividir/:a/:b', (req, res) => {
-    const a = parseFloat(req.params.a);
-    const b = parseFloat(req.params.b);
-    const resultado = calculadora.dividir(a, b);
-    res.send(`Resultado: ${resultado}`);
+app.get('/multiplicar/:a/:b', (req, res)=>{
+    let a = req.params.a;
+    let b = req.params.b;
+    let c = calc.multiplicar(a, b);
+    res.send(`${a} * ${b} = ${c}`);
 });
 
-const port = 3000;
-app.listen(port, () => {
-    console.log(`Servidor rodando na porta ${port}`);
+app.get('/dividir/:a/:b', (req, res)=>{
+    let a = req.params.a;
+    let b = req.params.b;
+    let c = calc.dividir(a, b);
+    res.send(`${a} / ${b} = ${c}`);
+});
+
+const PORT = 8080;
+app.listen(PORT, ()=>{
+    console.log('app executando na porta ' + PORT);
 });
