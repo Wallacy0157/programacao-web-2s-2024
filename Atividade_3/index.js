@@ -37,4 +37,4 @@ app.get('/dividir/:a/:b', (req, res)=>{
 const PORT = 8080;
 app.listen(PORT, ()=>{
     console.log('app executando na porta ' + PORT);
-});
+}); 
