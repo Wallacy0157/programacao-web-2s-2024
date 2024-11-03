@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mural de Mensagens</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Mural de Mensagens</h1>
+        <form id="messageForm">
+            <label for="message">Nova Mensagem:</label>
+            <textarea id="message" required></textarea>
+            <button type="submit">Postar</button>
+        </form>
+        <div id="messages"></div>
+        <button class="logout-btn" onclick="logout()">Sair</button>
+    </div>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/messages.js"></script>
+</body>
+</html>
